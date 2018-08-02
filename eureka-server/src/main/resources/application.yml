@@ -1,0 +1,72 @@
+#spring:
+#  application:
+#    name: eureka-server
+
+#server:
+#  port: 10001
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: eureka-server
+---
+spring:
+  profiles: node1
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 10001
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10002/eureka/,http://admin:123456@localhost:10003/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+---
+spring:
+  profiles: node2
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 10002
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10001/eureka/,http://admin:123456@localhost:10003/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+---
+spring:
+  profiles: node3
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 10003
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10001/eureka/,http://admin:123456@localhost:10002/eureka/
+    register-with-eureka: true
+    fetch-registry: true

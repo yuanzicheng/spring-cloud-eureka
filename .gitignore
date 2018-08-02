@@ -1,0 +1,15 @@
+# ignore
+**/build/
+**/target/
+**/out/
+**/classes/
+**/.gradle/
+**/gradle/
+.idea/
+*.class
+*.iml
+*.db
+*.log
+*.jar
+*.war
+.DS_Store

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka-client-provider
+
+server:
+  port: 20001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10001/eureka/,http://admin:123456@localhost:10002/eureka/,http://admin:123456@localhost:10003/eureka/
